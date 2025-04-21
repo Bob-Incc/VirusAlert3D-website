@@ -3,48 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virus Alert 3D Game - Starring Weird Al</title>
+    <title>Virus Alert 3D Game</title>
     <style>
-        body {
+        body, html {
             margin: 0;
+            padding: 0;
+            height: 100%;
             background-color: #d7d6ff;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        }
+        .game-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        ruffle-embed {
+            width: 100%;
+            height: 100%;
+            display: block;
         }
     </style>
 </head>
 <body>
-<html>
-<head>
-<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-<style>
-html, body {
-margin:0px;
-}
-</style>
-</head>
-<body>
-<script>
-window.RufflePlayer = window.RufflePlayer || {};
-//Below code forces autoplay, no splashscreen and allows sound
 
-window.RufflePlayer.config = {
-"autoplay": "on","splashScreen": false,"unmuteOverlay": "hidden","quality": "medium" };
-// End custom configuration code above
-window.addEventListener("load", (event) => {
-const ruffle = window.RufflePlayer.newest();
-const player = ruffle.createPlayer();
-const container = document.getElementById("container");
-container.appendChild(player);
-player.load("virus_alert_web.swf");
-player.style.width = "100%";
-player.style.height = "100%";
-});
-</script>
-<div id="container"></div>
-    </script>
+<div class="game-container">
+    <ruffle-embed width="100%" height="100%" src="virus_alert_web.swf" quality="high"
+        pluginspage="https://web.archive.org/web/20080103005816/http://www.macromedia.com/go/getflashplayer" 
+        align="middle" play="true" loop="true" scale="showall" wmode="window" bgcolor="#d7d6ff">
+    </ruffle-embed>
+</div>
+
 </body>
 </html>
