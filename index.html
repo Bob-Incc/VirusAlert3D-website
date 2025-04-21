@@ -11,9 +11,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #d7d6fe; /* Updated background color */
+            background-color: #d7d6fe; /* Background color */
+            overflow: hidden; /* Prevent scrolling */
         }
         #ruffle-container {
+            width: 896px; /* Fixed width */
+            height: 1472px; /* Fixed height */
             background-color: #fff;
             border: 1px solid #ccc;
             overflow: hidden; /* Prevent overflow */
@@ -30,13 +33,8 @@
         const player = ruffle.createPlayer();
         container.appendChild(player);
 
-        // Load the SWF file and set dimensions
-        player.load("virus_alert_web.swf").then(() => {
-            // Get the dimensions of the SWF file
-            const swfDimensions = player.getStageSize();
-            container.style.width = `${swfDimensions.width}px`;
-            container.style.height = `${swfDimensions.height}px`;
-        }).catch(error => {
+        // Load the SWF file
+        player.load("virus_alert_web.swf").catch(error => {
             console.error("Error loading SWF file:", error);
         });
     </script>
