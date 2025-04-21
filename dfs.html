@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruffle SWF Player</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #ruffle-container {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="ruffle-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ruffle/0.1.0/ruffle.js"></script>
+    <script>
+        const ruffle = window.RufflePlayer.newest();
+        const container = document.getElementById("ruffle-container");
+        const player = ruffle.createPlayer();
+        container.appendChild(player);
+
+        player.load("virus_alert_web.swf").catch(error => {
+            console.error("Error loading SWF file:", error);
+        });
+    </script>
+</body>
+</html>
