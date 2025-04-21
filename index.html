@@ -14,33 +14,37 @@
             align-items: center;
             height: 100vh;
         }
-        #ruffle-container {
-            width: 800px; /* Fixed width */
-            height: 1300px; /* Fixed height */
-            background-color: #fff;
-            border: 1px solid #ccc;
-            overflow: hidden; /* Prevent overflow */
-        }
     </style>
 </head>
 <body>
-    <div id="ruffle-container"></div>
+<html>
+<head>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+<style>
+html, body {
+margin:0px;
+}
+</style>
+</head>
+<body>
+<script>
+window.RufflePlayer = window.RufflePlayer || {};
+//Below code forces autoplay, no splashscreen and allows sound
 
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <script>
-        const ruffle = window.RufflePlayer.newest();
-        const container = document.getElementById("ruffle-container");
-        const player = ruffle.createPlayer();
-        container.appendChild(player);
-
-        // Load the SWF file
-        player.load("virus_alert_web.swf").then(() => {
-            player.setSize(800, 1300); // Set size explicitly
-            player.scale = "100%"; // Ensure scaling to fit
-            player.wmode = "transparent"; // Set wmode if needed
-        }).catch(error => {
-            console.error("Error loading SWF file:", error);
-        });
+window.RufflePlayer.config = {
+"autoplay": "on","splashScreen": false,"unmuteOverlay": "hidden","quality": "medium" };
+// End custom configuration code above
+window.addEventListener("load", (event) => {
+const ruffle = window.RufflePlayer.newest();
+const player = ruffle.createPlayer();
+const container = document.getElementById("container");
+container.appendChild(player);
+player.load("virus_alert_web.swf");
+player.style.width = "100%";
+player.style.height = "100%";
+});
+</script>
+<div id="container"></div>
     </script>
 </body>
 </html>
