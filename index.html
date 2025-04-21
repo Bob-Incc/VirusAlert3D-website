@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruffle SWF Player</title>
+    <title>Virus Alert 3D Game</title>
     <style>
         body {
+            margin: 0;
+            background-color: #d7d6fe; /* Background color */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #d7d6fe; /* Background color */
-            overflow: hidden; /* Prevent scrolling */
         }
         #ruffle-container {
             width: 896px; /* Fixed width */
             height: 1472px; /* Fixed height */
             background-color: #fff;
             border: 1px solid #ccc;
-            overflow: hidden; /* Prevent overflow */
+            overflow: hidden;
         }
     </style>
 </head>
@@ -32,7 +31,7 @@
         const container = document.getElementById("ruffle-container");
         const player = ruffle.createPlayer();
         container.appendChild(player);
-
+        
         // Load the SWF file
         player.load("virus_alert_web.swf").catch(error => {
             console.error("Error loading SWF file:", error);
