@@ -36,7 +36,7 @@
         // Load the SWF file
         player.load("virus_alert_web.swf").then(() => {
             player.setSize(800, 1300); // Set size explicitly
-            player.scale = "showall"; // Ensure scaling to fit
+            player.scale = "100%"; // Ensure scaling to fit
             player.wmode = "transparent"; // Set wmode if needed
         }).catch(error => {
             console.error("Error loading SWF file:", error);
