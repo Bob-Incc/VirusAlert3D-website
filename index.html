@@ -5,32 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virus Alert 3D Game</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #d7d6ff;
-        }
-        .game-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        ruffle-embed {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-    </style>
-</head>
-<body>
+        </body>
+        <div id='ruffle' style="text-align: center;"></div>
+        <script src='https://xxsibxx.github.io/ruffleembedsetup112/ruffle/ruffle.js'></script>
+        <script>
+var swfobject = {};
 
-<div class="game-container">
-    <ruffle-embed width="100%" height="100%" src="virus_alert_web.swf" quality="high"
-        pluginspage="https://web.archive.org/web/20080103005816/http://www.macromedia.com/go/getflashplayer" 
-        align="middle" play="true" loop="true" scale="showall" wmode="window" bgcolor="#d7d6ff">
-    </ruffle-embed>
-</div>
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+        window.RufflePlayer.config = {
+    // Options affecting the whole page
+    "publicPath": undefined,
+    "polyfills": true,
+
+    // Options affecting files only
+    "autoplay": "on",
+    "unmuteOverlay": "hidden",
+    "backgroundColor": "#000000",
+    "letterbox": "fullscreen",
+    "warnOnUnsupportedContent": true,
+    "contextMenu": false,
+    "showSwfDownload": false,
+    "upgradeToHttps": window.location.protocol === "https:",
+    "maxExecutionDuration": {"secs": 15, "nanos": 0},
+    "logLevel": "error",
+    "base": null,
+    "menu": true,
+    "salign": "",
+    "scale": "showAll",
+    "quality": "medium",
+};
+    
+    player.load({ url: url });
+}
+
+swfobject.embedSWF('URL', 'ruffle', 890, 529);
+        </script>
 
 </body>
 </html>
