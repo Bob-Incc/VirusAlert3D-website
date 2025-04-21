@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Screen SWF Embed</title>
+    <title>Full Screen SWF Embed with Ruffle</title>
     <style>
         body, html {
             margin: 0;
@@ -17,6 +17,14 @@
             width: 100%;
             height: 100%;
         }
+        #ruffleContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none; /* Initially hidden */
+        }
     </style>
 </head>
 <body>
@@ -28,5 +36,22 @@
             <param name="wmode" value="opaque" />
         </object>
     </div>
+    <div id="ruffleContainer"></div>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+        const ruffle = window.RufflePlayer.newest();
+        const ruffleContainer = document.getElementById("ruffleContainer");
+        const player = ruffle.createPlayer();
+
+        // Check if Flash is available
+        if (!document.querySelector('object[type="application/x-shockwave-flash"]')) {
+            ruffleContainer.appendChild(player);
+            player.load("virus_alert_web.swf").then(() => {
+                player.setFullscreen(true);
+            });
+            ruffleContainer.style.display = 'block'; // Show Ruffle player
+            document.getElementById("flashContent").style.display = 'none'; // Hide Flash content
+        }
+    </script>
 </body>
 </html>
