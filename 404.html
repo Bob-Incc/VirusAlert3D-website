@@ -1,17 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus Alert 3D Game - Starring Weird Al - Help Al Delete the Viruses</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Enable scrolling */
+            height: 100%; /* Full height for scrolling */
+            background-color: #d7d6fe; /* Set background color */
+        }
+        #flashContent {
+            width: 800px; /* Set width to 800 pixels */
+            height: 1300px; /* Set height to 1300 pixels */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto; /* Center the SWF */
+        }
+        #ruffleContainer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none; /* Initially hidden */
+        }
+        #downloadButton {
+            display: block;
+            margin: 20px auto; /* Center the button */
+            text-align: center;
+        }
+        #downloadButton img {
+            width: 150px; /* Set button image width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
 <body>
+    <div id="flashContent">
+        <object type="application/x-shockwave-flash" data="virus_alert_web.swf" width="800" height="1300">
+            <param name="movie" value="virus_alert_web.swf" />
+            <param name="allowFullScreen" value="true" />
+            <param name="allowScriptAccess" value="always" />
+            <param name="wmode" value="opaque" />
+        </object>
+    </div>
+    <div id="ruffleContainer"></div>
+    <a id="downloadButton" href="www.virusalert3d.com/InstallVirusAlert.exe" target="_blank">
+        <img src="anim_button.gif" alt="Download Button">
+    </a>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+        const ruffle = window.RufflePlayer.newest();
+        const ruffleContainer = document.getElementById("ruffleContainer");
+        const player = ruffle.createPlayer({
+            loading: false // Disable loading screen
+        });
 
-
-
-
- 
-<p>Coming VERY soon....</p>
-<p>Virus Alert 3D</p>
-<p>Starring "Weird Al" Yankovic </p>
-
-
-
-
-
-</body></html>
+        // Check if Flash is available
+        if (!document.querySelector('object[type="application/x-shockwave-flash"]')) {
+            ruffleContainer.appendChild(player);
+            player.load("virus_alert_web.swf").then(() => {
+                player.setFullscreen(true);
+            });
+            ruffleContainer.style.display = 'block'; // Show Ruffle player
+            document.getElementById("flashContent").style.display = 'none'; // Hide Flash content
+        }
+    </script>
+</body>
+</html>
