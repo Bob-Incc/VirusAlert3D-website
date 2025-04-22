@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virus Alert 3D Game - Starring Weird Al - Help Al Delete the Viruses</title>
+    <title>SWF Embed with Ruffle</title>
     <style>
         body, html {
             margin: 0;
@@ -28,6 +28,15 @@
             height: 100%;
             display: none; /* Initially hidden */
         }
+        #downloadButton {
+            display: block;
+            margin: 20px auto; /* Center the button */
+            text-align: center;
+        }
+        #downloadButton img {
+            width: 150px; /* Set button image width */
+            height: auto; /* Maintain aspect ratio */
+        }
     </style>
 </head>
 <body>
@@ -40,11 +49,16 @@
         </object>
     </div>
     <div id="ruffleContainer"></div>
+    <a id="downloadButton" href="https://github.com/Bob-Incc/VirusAlert3D-website/blob/main/InstallVirusAlert.exe" target="_blank">
+        <img src="anim_button.gif" alt="Download Button">
+    </a>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
         const ruffle = window.RufflePlayer.newest();
         const ruffleContainer = document.getElementById("ruffleContainer");
-        const player = ruffle.createPlayer();
+        const player = ruffle.createPlayer({
+            loading: false // Disable loading screen
+        });
 
         // Check if Flash is available
         if (!document.querySelector('object[type="application/x-shockwave-flash"]')) {
