@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus Alert 3D Game - Starring Weird Al - Help Al Delete the Viruses</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Enable scrolling */
+            height: 100%; /* Full height for scrolling */
+            background-color: #d7d6fe; /* Set background color */
+        }
+        #flashContent {
+            width: 800px; /* Set width to 800 pixels */
+            height: 1300px; /* Set height to 1300 pixels */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto; /* Center the SWF */
+        }
+        #downloadButton {
+            display: block;
+            margin: 20px auto; /* Center the button */
+            text-align: center;
+        }
+        #downloadButton img {
+            width: 150px; /* Set button image width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <div id="flashContent">
+        <object type="application/x-shockwave-flash" data="virus_alert_web.swf" width="800" height="1300">
+            <param name="movie" value="virus_alert_web.swf" />
+            <param name="allowFullScreen" value="true" />
+            <param name="allowScriptAccess" value="always" />
+            <param name="wmode" value="opaque" />
+        </object>
+    </div>
+    <a id="downloadButton" href="www.virusalert3d.com/InstallVirusAlert.exe" target="_blank">
+        <img src="anim_button.gif" alt="Download Button">
+    </a>
+</body>
+</html>
